@@ -1,0 +1,36 @@
+<h1>Listing listings</h1>
+
+<ul class="nav nav-pills" role="tablist">
+  <li class="active"><%= link_to 'View list', listings_path %></li>
+  <li><%= link_to 'New list', new_listing_path %></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Grade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings.each do |listing| %>
+      <tr>
+        <td><%= listing.name %></td>
+        <td><%= listing.description %></td>
+        <td><%= listing.grade %></td>
+        <td><%= link_to 'Show', listing, class: 'btn btn-primary btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to new_listing_path, class: 'btn btn-success' do %>
+  <i class="glyphicon glyphicon-plus"></i> New Listing
+<% end %>
